@@ -1,5 +1,9 @@
 "use strict";
 
+import pricingObj from './pricing.js'
+
+console.log(pricingObj)
+
 const containerLoc = document.querySelector(".container")
 const formPagesLoc = document.querySelector(".form-pages")
 const formPageArrLoc = document.querySelectorAll(".form-page")
@@ -111,78 +115,34 @@ buttonNextArrLoc.forEach((elem) => {
 
         if (actualPage.classList.contains("page3")) {
             if (page3Array.some((item)=>(item !== undefined && item !== false))) {
-                // if (page3_1) {
-                    movePage(1, -1)
-                // }
-                // } else if (page3_2) {
-                //     movePage(2, -1)
-                // } else if (page3_3) {
-                //     movePage(3, -1)
-                // } else if (page3_4) {
-                //     movePage(4, -1)
-                // } else if (page3_5) {
-                //     movePage(5, -1)
-                // } else {
-                //     movePage(6, -1)
-                // }
+                movePage(1, -1)
             }
         }
 
         if (actualPage.classList.contains("page3_1")) {
             if (page3_1Array.some((item)=>(item !== undefined && item !== false))) {
-                // if (page3_2) {
-                    movePage(1, -1)
-                // } 
-                // else if (page3_3) {
-                //     movePage(2, -1)
-                // } else if (page3_4) {
-                //     movePage(3, -1)
-                // } else if (page3_5) {
-                //     movePage(4, -1)
-                // } else {
-                //     movePage(5, -1)
-                // }
+                movePage(1, -1)
             }
         }
         if (actualPage.classList.contains("page3_2")) {
             if (page3_2_1 !== undefined &&
                 page3_2_2 !== undefined &&
                 page3_2_3 !== undefined) {
-                // if (page3_3) {
-                    movePage(1, -1)
-                // } 
-                // else if (page3_4) {
-                //     movePage(2, -1)
-                // } else if (page3_5) {
-                //     movePage(3, -1)
-                // } else {
-                //     movePage(4, -1)
-                // }
+                 movePage(1, -1)
             }
         }
         if (actualPage.classList.contains("page3_3")) {
             if (page3_3_1 !== undefined ){
-                // if (page3_4) {
-                    movePage(1, -1)
-                // } 
-                // else if (page3_5) {
-                //     movePage(2, -1)
-                // } else {
-                //     movePage(3, -1)
-                // }
+                movePage(1, -1)
             }
         }
         if (actualPage.classList.contains("page3_4")) {
             if (page3_4Array.some((item)=>(item !== undefined && item !== false))) {
-                // if (page3_5) {
-                    movePage(1, -1)
-                // } 
-                // else {
-                //     movePage(2, -1)
-                // }
+                movePage(1, -1)
             }
         }
         if (actualPage.classList.contains("page3_5")) {
+            console.log(page3_5Array)
             if (page3_5Array.some((item)=>(item !== undefined && item !== false))) {
                 movePage(1, -1)
             }
@@ -211,57 +171,16 @@ buttonPrevArrLoc.forEach((elem) => {
             movePage(1, 1)
         }
         if (actualPage.classList.contains("page3_2")) {
-            if (page3_1Array.some((item)=>(item !== undefined && item !== false))) {
-               movePage(1, 1)
-            } 
-            // else {
-            //     movePage(2, 1)
-            // }
+            movePage(1, 1)
         }
         if (actualPage.classList.contains("page3_3")) {
-            if (page3_2_1 !== undefined &&
-                page3_2_2 !== undefined &&
-                page3_2_3 !== undefined) {
-                movePage(1, 1)
-            } 
-            // else if (page3_1Array.some((item)=>(item !== undefined && item !== false))) {
-            //     movePage(2, 1)
-            //     }
-            //  else {
-            //     movePage(3, 1)
-            // }
+            movePage(1, 1)
         }
         if (actualPage.classList.contains("page3_4")) {
-            if (page3_3_1 !== undefined ){
-                movePage(1, 1)
-            } 
-            // else if (page3_2_1 !== undefined &&
-            //     page3_2_2 !== undefined &&
-            //     page3_2_3 !== undefined) {
-            //     movePage(2, 1)
-            // } else if (page3_1Array.some((item)=>(item !== undefined && item !== false))) {
-            //     movePage(3, 1)
-            //     }
-            //  else {
-            //     movePage(4, 1)
-            // }
+            movePage(1, 1)
         }
         if (actualPage.classList.contains("page3_5")) {
-            if (page3_4Array.some((item)=>(item !== undefined && item !== false))) {
-                movePage(1, 1)
-            } 
-            // else if (page3_3_1 !== undefined ){
-            //     movePage(2, 1)
-            // } else if (page3_2_1 !== undefined &&
-            //     page3_2_2 !== undefined &&
-            //     page3_2_3 !== undefined) {
-            //     movePage(3, 1)
-            // } else if (page3_1Array.some((item)=>(item !== undefined && item !== false))) {
-            //     movePage(4, 1)
-            //     }
-            //  else {
-            //     movePage(5, 1)
-            // }
+            movePage(1, 1)
         }
     })
 })
@@ -320,7 +239,7 @@ const changeVariableMulti = (varname, varvalue) => {
     if (varname === "page3_5_3") {page3_5_3 = varvalue}
     if (varname === "page3_5_4") {page3_5_4 = varvalue}
     if (varname === "page3_5_5") {page3_5_5 = varvalue}
-    if (varname === "page3_6_5") {page3_5_6 = varvalue}
+    if (varname === "page3_5_6") {page3_5_6 = varvalue}
 
     page3_5Array = [page3_5_1, page3_5_2, page3_5_3, page3_5_4, page3_5_5, page3_5_6]
 
@@ -353,17 +272,12 @@ contentArrLoc.forEach((elem)=>{
             const actualPage = e.target.closest(".form-page")
 
             if (actualPage.classList.contains("page3")) {
-                console.log(e.currentTarget.dataset.var_name)
                 if (e.currentTarget.classList.contains("selected")) {
-                    console.log("selected")
-                    console.log(formPageArrLoc)
                     document.querySelector(`.${e.currentTarget.dataset.var_name}`).classList.remove("hidden")
                 } else {
-                    console.log("non-selected")
                     document.querySelector(`.${e.currentTarget.dataset.var_name}`).classList.add("hidden")
                 }
             }
-
         })
     })
 })

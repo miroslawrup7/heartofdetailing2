@@ -184,6 +184,44 @@ html {
     font-family: "Video400", sans-serif;
 }
 
+.configuration-box-container {
+    display: flex;
+    width: $base-width;
+
+    .reservation {
+
+        .reservation-box {
+            margin-left: 32px;
+            width: 400px;
+            border: 1px solid #A5FAF340;
+            box-shadow: 0px 0px 16px 0px #A5FAF37A inset, 0px 4px 8px 0px #A5FAF33D;
+            background-color: $niebieski500;
+            padding: 64px 38px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            border-radius: 12px;
+
+            .text {
+                font-family: "Video400", sans-serif;
+                font-size: 32px;
+                letter-spacing: -0.01em;
+                color: $bialy200;
+            }
+
+            .buttons-wrapper {
+                width: 100%;
+
+                .button {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
+
 .configurator-box {
     background-image: linear-gradient(white, white),
         linear-gradient(288deg, rgba(69, 213, 236, 0.07), rgba(69, 213, 236, 0.7));
@@ -192,6 +230,11 @@ html {
     background-clip: content-box, border-box;
     border-radius: 12px;
     width: $base-width;
+    display: flex;
+
+    &.summary {
+        width: calc($base-width - 100px - 32px);
+    }
 
     .configurator-box-wrapper {
         padding: 64px 48px;
@@ -579,7 +622,18 @@ html {
                     color: $niebieski500;
                 }
             }
+
+            .notes-wrapper {
+                margin-top: 12px;
+
+                .note {
+                    font-family: "WorkSans", sans-serif;
+                    font-size: 10px;
+                    color: #B2B2B4;
+                }
+            }
         }
+
 
         .copy-to-email {
             display: flex;
