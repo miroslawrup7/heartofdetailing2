@@ -471,6 +471,7 @@ html {
   color: #45D5EC;
   font-weight: normal;
   width: 280px;
+  flex-shrink: 0;
 }
 .configurator-box .configurator-box-wrapper .summary-box .items-box .item .bottom {
   padding-top: 6px;

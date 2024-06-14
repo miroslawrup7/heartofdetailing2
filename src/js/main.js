@@ -1,8 +1,6 @@
 "use strict";
 
-import pricingObj from './pricing.js'
-
-console.log(pricingObj)
+import {pricingCostObj, pricingTimeObj} from './pricing.js'
 
 const containerLoc = document.querySelector(".container")
 const formPagesLoc = document.querySelector(".form-pages")
@@ -142,7 +140,6 @@ buttonNextArrLoc.forEach((elem) => {
             }
         }
         if (actualPage.classList.contains("page3_5")) {
-            console.log(page3_5Array)
             if (page3_5Array.some((item)=>(item !== undefined && item !== false))) {
                 movePage(1, -1)
             }
@@ -242,8 +239,233 @@ const changeVariableMulti = (varname, varvalue) => {
     if (varname === "page3_5_6") {page3_5_6 = varvalue}
 
     page3_5Array = [page3_5_1, page3_5_2, page3_5_3, page3_5_4, page3_5_5, page3_5_6]
-
 }
+
+let carSize
+
+let totalPrice = 0
+let stylingPrice = 0
+let paintRenewalPrice = 0
+let foilPrice = 0
+let paintProtectPrice = 0
+let interiorProtectPrice = 0
+let additionalServicesPrice = 0
+
+let allSelectedOptionsPriceArr = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+
+const calculateCost = (item_name, item_no, state) => {
+
+    if ( // na tych stronach nie ma kalkulacji
+        item_name !== "page1" && 
+        item_name !== "page3_1" && 
+        item_name !== "page3_2" && 
+        item_name !== "page3_3" && 
+        item_name !== "page3_4" && 
+        item_name !== "page3_5" &&
+        item_name !== "page3_2_1" &&
+        item_name !== "page3_4_1" &&
+        item_name !== "page3_4_2" &&
+        item_name !== "page3_4_3" &&
+        item_name !== "page3_4_4" &&
+        item_name !== "page3_4_5"
+    ) {
+        let pricingIndex
+
+        if (item_name === "page2") {
+            carSize = Number(item_no)
+        } else {
+            switch (item_name) {
+                case "page3_1_1": pricingIndex = 0; break
+                case "page3_1_2": pricingIndex = 1; break
+                case "page3_1_3": pricingIndex = 2; break
+                case "page3_1_4": pricingIndex = 3; break
+                case "page3_1_5": pricingIndex = 4; break
+                case "page3_1_6": pricingIndex = 5; break
+                case "page3_2_2": 
+                    if (item_no == 1) pricingIndex = 6
+                    if (item_no == 2) pricingIndex = 7; break
+                case "page3_2_3":
+                    if (item_no == 1) pricingIndex = 8
+                    if (item_no == 2) pricingIndex = 9
+                    if (item_no == 3) pricingIndex = 10
+                    if (item_no == 4) pricingIndex = 11; break
+                case "page3_3_1": 
+                    if (item_no == 1) pricingIndex = 12
+                    if (item_no == 2) pricingIndex = 13
+                    if (item_no == 3) pricingIndex = 14; break
+                case "page3_5_1": pricingIndex = 15; break
+                case "page3_5_2": pricingIndex = 16; break
+                case "page3_5_3": pricingIndex = 17; break
+                case "page3_5_4": pricingIndex = 18; break
+                case "page3_5_5": pricingIndex = 19; break
+                case "page3_5_6": pricingIndex = 20; break
+            }
+        
+            let actualSelectedOptionValue = pricingCostObj[pricingIndex][carSize]
+        
+            if (state) {
+                allSelectedOptionsPriceArr[pricingIndex] = actualSelectedOptionValue
+            } else {
+                allSelectedOptionsPriceArr[pricingIndex] = null
+            }
+    
+            totalPrice = allSelectedOptionsPriceArr.reduce((acc, curr) => {
+                return acc + curr
+            },0)
+    
+            stylingPrice = 
+            allSelectedOptionsPriceArr[0] + 
+            allSelectedOptionsPriceArr[1] +
+            allSelectedOptionsPriceArr[2] +
+            allSelectedOptionsPriceArr[3] +
+            allSelectedOptionsPriceArr[4] +
+            allSelectedOptionsPriceArr[5]
+    
+            paintRenewalPrice = 
+            allSelectedOptionsPriceArr[6] + 
+            allSelectedOptionsPriceArr[7]
+
+            foilPrice =
+            allSelectedOptionsPriceArr[12] + 
+            allSelectedOptionsPriceArr[13] +
+            allSelectedOptionsPriceArr[14]
+
+            paintProtectPrice = 
+            allSelectedOptionsPriceArr[8] + 
+            allSelectedOptionsPriceArr[9] +
+            allSelectedOptionsPriceArr[10] +
+            allSelectedOptionsPriceArr[11]
+
+            // interiorProtectPrice = ???
+
+            additionalServicesPrice =
+            allSelectedOptionsPriceArr[15] + 
+            allSelectedOptionsPriceArr[16] +
+            allSelectedOptionsPriceArr[17] +
+            allSelectedOptionsPriceArr[18] +
+            allSelectedOptionsPriceArr[19] +
+            allSelectedOptionsPriceArr[20]
+    
+            const totalPriceLoc = document.querySelectorAll(".totalPrice")
+            totalPriceLoc.forEach((elem)=>{
+                elem.innerText = totalPrice + " pln"
+            })
+    
+            // const stylingPriceLoc = document.querySelector(".stylingPrice")
+            // stylingPriceLoc.innerText = stylingPrice
+    
+            const paintRenewalPriceLoc = document.querySelector(".paintRenewalPrice")
+            paintRenewalPriceLoc.innerText = paintRenewalPrice
+
+            const foilPriceLoc = document.querySelector(".foilPrice")
+            foilPriceLoc.innerText = foilPrice
+
+            const paintProtectPriceLoc = document.querySelector(".paintProtectPrice")
+            paintProtectPriceLoc.innerText = paintProtectPrice
+
+            // const interiorProtectPriceLoc = document.querySelector(".interiorProtectPrice")
+            // interiorProtectPriceLoc.innerText = interiorProtectPrice
+
+            const additionalServicesPriceLoc = document.querySelector(".additionalServicesPrice")
+            additionalServicesPriceLoc.innerText = additionalServicesPrice
+        }
+    }
+}
+
+const removeFromCalculateCost = (item_name, item_no, state) => {
+    // odejmowanie od sumy odklikniętych kategorii na str. 3_1 - 3_5 (usuwanie z tablicy)
+    if (
+        item_name === "page3_1" ||
+        item_name === "page3_2" || 
+        item_name === "page3_3" || 
+        item_name === "page3_4" || 
+        item_name === "page3_5"
+    ) {
+        console.log(item_name, item_no, state)
+    }
+}
+
+let totalTime = 0
+let allSelectedOptionsTimeArr = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+
+const calculateTime = (item_name, item_no, state) => {
+
+    if ( // na tych stronach nie ma kalkulacji
+        item_name !== "page1" && 
+        item_name !== "page3_1" && 
+        item_name !== "page3_2" && 
+        item_name !== "page3_3" && 
+        item_name !== "page3_4" && 
+        item_name !== "page3_5" &&
+        item_name !== "page3_2_1" &&
+        item_name !== "page3_4_1" &&
+        item_name !== "page3_4_2" &&
+        item_name !== "page3_4_3" &&
+        item_name !== "page3_4_4" &&
+        item_name !== "page3_4_5"
+    ) {
+        let pricingIndex
+
+        if (item_name === "page2") {
+            carSize = Number(item_no)
+        } else {
+            switch (item_name) {
+                case "page3_1_1": pricingIndex = 0; break
+                case "page3_1_2": pricingIndex = 1; break
+                case "page3_1_3": pricingIndex = 2; break
+                case "page3_1_4": pricingIndex = 3; break
+                case "page3_1_5": pricingIndex = 4; break
+                case "page3_1_6": pricingIndex = 5; break
+                case "page3_2_2": 
+                    if (item_no == 1) pricingIndex = 6
+                    if (item_no == 2) pricingIndex = 7; break
+                case "page3_2_3":
+                    if (item_no == 1) pricingIndex = 8
+                    if (item_no == 2) pricingIndex = 9
+                    if (item_no == 3) pricingIndex = 10
+                    if (item_no == 4) pricingIndex = 11; break
+                case "page3_3_1": 
+                    if (item_no == 1) pricingIndex = 12
+                    if (item_no == 2) pricingIndex = 13
+                    if (item_no == 3) pricingIndex = 14; break
+                case "page3_5_1": pricingIndex = 15; break
+                case "page3_5_2": pricingIndex = 16; break
+                case "page3_5_3": pricingIndex = 17; break
+                case "page3_5_4": pricingIndex = 18; break
+                case "page3_5_5": pricingIndex = 19; break
+                case "page3_5_6": pricingIndex = 20; break
+            }
+        
+            let actualSelectedOptionValue = pricingTimeObj[pricingIndex][carSize]
+        
+            if (state) {
+                allSelectedOptionsTimeArr[pricingIndex] = actualSelectedOptionValue
+            } else {
+                allSelectedOptionsTimeArr[pricingIndex] = null
+            }
+    
+            totalTime = allSelectedOptionsTimeArr.reduce((acc, curr) => {
+                return acc + curr
+            },0)
+
+            let workDay = 0
+
+            if (totalTime > 8) {
+                workDay =  Math.ceil(totalTime / 8)
+            }
+    
+            const totalTimeLoc = document.querySelectorAll(".totalTime")
+            totalTimeLoc.forEach((elem)=>{
+                elem.innerText = `${totalTime}h / ${workDay} dni`
+            })
+        }
+    }
+}
+
+let interiorProtectItems = []
+let joinedInteriorProtectItems = ""
+let additionalServicesItems = []
+let joinedAdditionalServicesItems = ""
 
 const contentArrLoc = document.querySelectorAll(".content")
 contentArrLoc.forEach((elem)=>{
@@ -251,21 +473,130 @@ contentArrLoc.forEach((elem)=>{
     selectBoxArrLoc.forEach((el)=>{
         el.addEventListener("click", (e)=>{
 
+            let item_name = e.currentTarget.dataset.var_name
+            let item_no = e.currentTarget.dataset.var_value
+            let state
+            
             if (elem.classList.contains("once")) {
                 selectBoxArrLoc.forEach((element)=>{
                     element.classList.remove("selected")
+
+                    state = false
+                    item_name = element.dataset.var_name
+                    item_no = element.dataset.var_value
+                    calculateCost(item_name, item_no, state)
+                    calculateTime(item_name, item_no, state)
                 })
                 el.classList.add("selected")
+
+                state = true
+                item_name = e.currentTarget.dataset.var_name
+                item_no = e.currentTarget.dataset.var_value
+                calculateCost(item_name, item_no, state)
+                calculateTime(item_name, item_no, state)
+
                 changeVariableOnce(el.dataset.var_name, el.dataset.var_value)
+
+                const carConditionLoc = document.querySelector(".summary-page .carCondition")
+                if (item_name === "page1") {
+                    if (item_no === "1") { carConditionLoc.innerText = "Nowe" }
+                    if (item_no === "2") { carConditionLoc.innerText = "Używane" }
+                }
+
+                const carSizeLoc = document.querySelector(".summary-page .carSize")
+                if (item_name === "page2") {
+                    if (item_no === "0") { carSizeLoc.innerText = "Małe" }
+                    if (item_no === "1") { carSizeLoc.innerText = "Średnie" }
+                    if (item_no === "2") { carSizeLoc.innerText = "Duże i SUV" }
+                    if (item_no === "3") { carSizeLoc.innerText = "Duże SUV i większe" }
+                }
+
+                const paintRenewalItemsLoc = document.querySelector(".summary-page .paintRenewalItems")
+                if (item_name === "page3_2_2") {
+                    let paintRenewalItem = ""
+                    if (item_no === "1") { paintRenewalItem = "Odświeżanie lakieru" }
+                    if (item_no === "2") { paintRenewalItem = "Korekta lakieru" }
+                    paintRenewalItemsLoc.innerText = paintRenewalItem
+                }
+
+                const foilItemsLoc = document.querySelector(".summary-page .foilItems")
+                if (item_name === "page3_3_1") {
+                    let foilItems = ""
+                    if (item_no === "1") { foilItems = "Folia bikini" }
+                    if (item_no === "2") { foilItems = "Folia full front" }
+                    if (item_no === "3") { foilItems = "Folia full body" }
+                    foilItemsLoc.innerText = foilItems
+                }
+
+                const paintProtectItemsLoc = document.querySelector(".summary-page .paintProtectItems")
+                if (item_name === "page3_2_3") {
+                    let paintProtectItems = ""
+                    if (item_no === "1") { paintProtectItems = "Woskowanie" }
+                    if (item_no === "2") { paintProtectItems = "Ceramika 1rok" }
+                    if (item_no === "3") { paintProtectItems = "Ceramika 3lata" }
+                    if (item_no === "4") { paintProtectItems = "Ceramika 4lata" }
+                    paintProtectItemsLoc.innerText = paintProtectItems
+                }
             }
 
             if (elem.classList.contains("multi")) {
                 if (el.classList.contains("selected")) {
                     el.classList.remove("selected")
                     changeVariableMulti(el.dataset.var_name, false)
+
+                    state = false
+                    calculateCost(item_name, item_no, state)
+                    calculateTime(item_name, item_no, state)
                 } else {
                     el.classList.add("selected")
                     changeVariableMulti(el.dataset.var_name, true)
+
+                    state = true
+                    calculateCost(item_name, item_no, state)
+                    calculateTime(item_name, item_no, state)
+                }
+
+                const interiorProtectItemsLoc = document.querySelector(".summary-page .interiorProtectItems")
+                if (item_name === "page3_4_1" || item_name === "page3_4_2" || item_name === "page3_4_3" || item_name === "page3_4_4" || item_name === "page3_4_5") {
+
+                    let item = ""
+                    if (item_name === "page3_4_1") { item = "Podstawowe czyszczenie" }
+                    if (item_name === "page3_4_2") { item = "Detailing - tapicerka materiałowa" }
+                    if (item_name === "page3_4_3") { item = "Detailing - tapicerka skórzana" }
+                    if (item_name === "page3_4_4") { item = "Czyszczenie tapicerka skórzana" }
+                    if (item_name === "page3_4_5") { item = "Czyszczenie tapicerka materiałowa" }
+                    
+                    if (state) {
+                        interiorProtectItems.push(item)
+                    } else {
+                        const index = interiorProtectItems.indexOf(item)
+                        interiorProtectItems.splice(index,1)
+                    }
+
+                    joinedInteriorProtectItems = interiorProtectItems.join(",<br>")
+                    interiorProtectItemsLoc.innerHTML = joinedInteriorProtectItems
+                }
+
+                const additionalServicesItemsLoc = document.querySelector(".summary-page .additionalServicesItems")
+                if (item_name === "page3_5_1" || item_name === "page3_5_2" || item_name === "page3_5_3" || item_name === "page3_5_4" || item_name === "page3_5_5" || item_name === "page3_5_6") {
+
+                    let item = ""
+                    if (item_name === "page3_5_1") { item = "Reflektory cermamika" }
+                    if (item_name === "page3_5_2") { item = "Reflektory folia" }
+                    if (item_name === "page3_5_3") { item = "Felgi ceramika" }
+                    if (item_name === "page3_5_4") { item = "Szyby ceramika" }
+                    if (item_name === "page3_5_5") { item = "Impregnacja dach cabrio" }
+                    if (item_name === "page3_5_6") { item = "Woskowanie lakieru bez polerowania" }
+                    
+                    if (state) {
+                        additionalServicesItems.push(item)
+                    } else {
+                        const index = additionalServicesItems.indexOf(item)
+                        additionalServicesItems.splice(index,1)
+                    }
+
+                    joinedAdditionalServicesItems = additionalServicesItems.join(",<br>")
+                    additionalServicesItemsLoc.innerHTML = joinedAdditionalServicesItems
                 }
             }
 
@@ -273,9 +604,14 @@ contentArrLoc.forEach((elem)=>{
 
             if (actualPage.classList.contains("page3")) {
                 if (e.currentTarget.classList.contains("selected")) {
+                    
                     document.querySelector(`.${e.currentTarget.dataset.var_name}`).classList.remove("hidden")
                 } else {
                     document.querySelector(`.${e.currentTarget.dataset.var_name}`).classList.add("hidden")
+                    document.querySelector(`.${e.currentTarget.dataset.var_name}`).querySelectorAll(`.select-box`).forEach((element)=>{
+                        element.classList.remove("selected")
+                    })
+                    removeFromCalculateCost(item_name, item_no, state)
                 }
             }
         })
