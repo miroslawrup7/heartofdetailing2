@@ -66,7 +66,7 @@ export const pricingTimeObj = [
     // folie
     [12,12,16,20],          // 12  3_3_1  1  folia bikini
     [16,18,24,28],          // 13  3_3_1  2  folia full front
-    [24,32,40,48],          // 14  3_3_1  3  olia full body
+    [24,32,40,48],          // 14  3_3_1  3  folia full body
     
     // dodatkowe
     [3,3,3,4],              // 15  3_5_1  reflektory ceramika
@@ -81,7 +81,7 @@ export const pricingTimeObj = [
     // 22  3_4_2  detailing - tapicerka materiałowa
     // 23  3_4_3  detailing - tapicerka skórzana
     // 24  3_4_4  czyszczenie tapicerka skórzana
-    // 25  3_4_5  czyszczenie tapicerka maateriałowa
+    // 25  3_4_5  czyszczenie tapicerka materiałowa
 ]
 
 

@@ -18,9 +18,10 @@ let page2; // małe 1, średnie 2, duże i suv 3, duże suv i większe 4
 let page3_1; // stylizacja
 let page3_2; // renowacja i ochrona lakieru
 let page3_3; // bezbarwne folie ochronne ppf
-let page3_4; // wnętrze
+// let page3_4; // wnętrze
 let page3_5; // dodatkowe
-let page3Array = [page3_1, page3_2, page3_3, page3_4, page3_5]
+// let page3Array = [page3_1, page3_2, page3_3, page3_4, page3_5]
+let page3Array = [page3_1, page3_2, page3_3, page3_5]
 
 //stylizacja
 let page3_1_1; // przyciemnianie szyb
@@ -40,12 +41,12 @@ let page3_2_3; // poziom zabezpieczenia: woskowanie 1, roczna ceramika 2, 3-letn
 let page3_3_1; // pakiety: bikini 1, full front 2, full body 3
 
 //wnętrze
-let page3_4_1; // podstawowe czyszcz.
-let page3_4_2; // tap. materiał.
-let page3_4_3; // tap. skórzana
-let page3_4_4; // czyszcz i zab. skór
-let page3_4_5; // pranie i impreg. tap. mater.
-let page3_4Array = [page3_4_1, page3_4_2, page3_4_3, page3_4_4, page3_4_5]
+// let page3_4_1; // podstawowe czyszcz.
+// let page3_4_2; // tap. materiał.
+// let page3_4_3; // tap. skórzana
+// let page3_4_4; // czyszcz i zab. skór
+// let page3_4_5; // pranie i impreg. tap. mater.
+// let page3_4Array = [page3_4_1, page3_4_2, page3_4_3, page3_4_4, page3_4_5]
 
 //dodatkowe
 let page3_5_1; // reflekt. ceram
@@ -134,11 +135,11 @@ buttonNextArrLoc.forEach((elem) => {
                 movePage(1, -1)
             }
         }
-        if (actualPage.classList.contains("page3_4")) {
-            if (page3_4Array.some((item)=>(item !== undefined && item !== false))) {
-                movePage(1, -1)
-            }
-        }
+        // if (actualPage.classList.contains("page3_4")) {
+        //     if (page3_4Array.some((item)=>(item !== undefined && item !== false))) {
+        //         movePage(1, -1)
+        //     }
+        // }
         if (actualPage.classList.contains("page3_5")) {
             if (page3_5Array.some((item)=>(item !== undefined && item !== false))) {
                 movePage(1, -1)
@@ -173,9 +174,9 @@ buttonPrevArrLoc.forEach((elem) => {
         if (actualPage.classList.contains("page3_3")) {
             movePage(1, 1)
         }
-        if (actualPage.classList.contains("page3_4")) {
-            movePage(1, 1)
-        }
+        // if (actualPage.classList.contains("page3_4")) {
+        //     movePage(1, 1)
+        // }
         if (actualPage.classList.contains("page3_5")) {
             movePage(1, 1)
         }
@@ -209,10 +210,11 @@ const changeVariableMulti = (varname, varvalue) => {
     if (varname === "page3_1") {page3_1 = varvalue}
     if (varname === "page3_2") {page3_2 = varvalue}
     if (varname === "page3_3") {page3_3 = varvalue}
-    if (varname === "page3_4") {page3_4 = varvalue}
+    // if (varname === "page3_4") {page3_4 = varvalue}
     if (varname === "page3_5") {page3_5 = varvalue}
 
-    page3Array = [page3_1, page3_2, page3_3, page3_4, page3_5]
+    // page3Array = [page3_1, page3_2, page3_3, page3_4, page3_5]
+    page3Array = [page3_1, page3_2, page3_3, page3_5]
 
     if (varname === "page3_1_1") {page3_1_1 = varvalue}
     if (varname === "page3_1_2") {page3_1_2 = varvalue}
@@ -223,13 +225,13 @@ const changeVariableMulti = (varname, varvalue) => {
 
     page3_1Array = [page3_1_1, page3_1_2, page3_1_3, page3_1_4, page3_1_5, page3_1_6]
 
-    if (varname === "page3_4_1") {page3_4_1 = varvalue}
-    if (varname === "page3_4_2") {page3_4_2 = varvalue}
-    if (varname === "page3_4_3") {page3_4_3 = varvalue}
-    if (varname === "page3_4_4") {page3_4_4 = varvalue}
-    if (varname === "page3_4_5") {page3_4_5 = varvalue}
+    // if (varname === "page3_4_1") {page3_4_1 = varvalue}
+    // if (varname === "page3_4_2") {page3_4_2 = varvalue}
+    // if (varname === "page3_4_3") {page3_4_3 = varvalue}
+    // if (varname === "page3_4_4") {page3_4_4 = varvalue}
+    // if (varname === "page3_4_5") {page3_4_5 = varvalue}
 
-    page3_4Array = [page3_4_1, page3_4_2, page3_4_3, page3_4_4, page3_4_5]
+    // page3_4Array = [page3_4_1, page3_4_2, page3_4_3, page3_4_4, page3_4_5]
 
     if (varname === "page3_5_1") {page3_5_1 = varvalue}
     if (varname === "page3_5_2") {page3_5_2 = varvalue}
@@ -260,14 +262,14 @@ const calculateCost = (item_name, item_no, state) => {
         item_name !== "page3_1" && 
         item_name !== "page3_2" && 
         item_name !== "page3_3" && 
-        item_name !== "page3_4" && 
+        // item_name !== "page3_4" && 
         item_name !== "page3_5" &&
-        item_name !== "page3_2_1" &&
-        item_name !== "page3_4_1" &&
-        item_name !== "page3_4_2" &&
-        item_name !== "page3_4_3" &&
-        item_name !== "page3_4_4" &&
-        item_name !== "page3_4_5"
+        item_name !== "page3_2_1"
+        // item_name !== "page3_4_1" &&
+        // item_name !== "page3_4_2" &&
+        // item_name !== "page3_4_3" &&
+        // item_name !== "page3_4_4" &&
+        // item_name !== "page3_4_5"
     ) {
         let pricingIndex
 
@@ -351,8 +353,8 @@ const calculateCost = (item_name, item_no, state) => {
                 elem.innerText = totalPrice + " pln"
             })
     
-            // const stylingPriceLoc = document.querySelector(".stylingPrice")
-            // stylingPriceLoc.innerText = stylingPrice
+            const stylingPriceLoc = document.querySelector(".stylingPrice")
+            stylingPriceLoc.innerText = stylingPrice
     
             const paintRenewalPriceLoc = document.querySelector(".paintRenewalPrice")
             paintRenewalPriceLoc.innerText = paintRenewalPrice
@@ -378,14 +380,157 @@ const removeFromCalculateCost = (item_name, item_no, state) => {
         item_name === "page3_1" ||
         item_name === "page3_2" || 
         item_name === "page3_3" || 
-        item_name === "page3_4" || 
+        // item_name === "page3_4" || 
         item_name === "page3_5"
     ) {
-        console.log(item_name, item_no, state)
+        if (item_name === "page3_1") {
+            allSelectedOptionsPriceArr[0] = null
+            allSelectedOptionsPriceArr[1] = null
+            allSelectedOptionsPriceArr[2] = null
+            allSelectedOptionsPriceArr[3] = null
+            allSelectedOptionsPriceArr[4] = null
+            allSelectedOptionsPriceArr[5] = null
+
+            allSelectedOptionsTimeArr[0] = null
+            allSelectedOptionsTimeArr[1] = null
+            allSelectedOptionsTimeArr[2] = null
+            allSelectedOptionsTimeArr[3] = null
+            allSelectedOptionsTimeArr[4] = null
+            allSelectedOptionsTimeArr[5] = null
+
+            const stylingItemsLoc = document.querySelector(".summary-page .stylingItems")
+            stylingItemsLoc.innerHTML = "---"
+            
+        }
+        if (item_name === "page3_2") {
+            allSelectedOptionsPriceArr[6] = null
+            allSelectedOptionsPriceArr[7] = null
+            allSelectedOptionsPriceArr[8] = null
+            allSelectedOptionsPriceArr[9] = null
+            allSelectedOptionsPriceArr[10] = null
+            allSelectedOptionsPriceArr[11] = null
+
+            allSelectedOptionsTimeArr[6] = null
+            allSelectedOptionsTimeArr[7] = null
+            allSelectedOptionsTimeArr[8] = null
+            allSelectedOptionsTimeArr[9] = null
+            allSelectedOptionsTimeArr[10] = null
+            allSelectedOptionsTimeArr[11] = null
+
+            const paintRenewalItemsLoc = document.querySelector(".summary-page .paintRenewalItems")    
+            paintRenewalItemsLoc.innerText = "---"
+            const paintProtectItemsLoc = document.querySelector(".summary-page .paintProtectItems")
+            paintProtectItemsLoc.innerText = "---"
+        }
+        if (item_name === "page3_3") {
+            allSelectedOptionsPriceArr[12] = null
+            allSelectedOptionsPriceArr[13] = null
+            allSelectedOptionsPriceArr[14] = null
+
+            allSelectedOptionsTimeArr[12] = null
+            allSelectedOptionsTimeArr[13] = null
+            allSelectedOptionsTimeArr[14] = null
+
+            const foilItemsLoc = document.querySelector(".summary-page .foilItems")
+            foilItemsLoc.innerText = "---"
+        }
+        if (item_name === "page3_5") {
+            allSelectedOptionsPriceArr[15] = null
+            allSelectedOptionsPriceArr[16] = null
+            allSelectedOptionsPriceArr[17] = null
+            allSelectedOptionsPriceArr[18] = null
+            allSelectedOptionsPriceArr[19] = null
+            allSelectedOptionsPriceArr[20] = null
+
+            allSelectedOptionsTimeArr[15] = null
+            allSelectedOptionsTimeArr[16] = null
+            allSelectedOptionsTimeArr[17] = null
+            allSelectedOptionsTimeArr[18] = null
+            allSelectedOptionsTimeArr[19] = null
+            allSelectedOptionsTimeArr[20] = null
+
+            const additionalServicesItemsLoc = document.querySelector(".summary-page .additionalServicesItems")
+            additionalServicesItemsLoc.innerHTML = "---"
+        }
+
+        totalPrice = allSelectedOptionsPriceArr.reduce((acc, curr) => {
+            return acc + curr
+        },0)
+
+        totalTime = allSelectedOptionsTimeArr.reduce((acc, curr) => {
+            return acc + curr
+        },0)
+
+        stylingPrice = 
+            allSelectedOptionsPriceArr[0] + 
+            allSelectedOptionsPriceArr[1] +
+            allSelectedOptionsPriceArr[2] +
+            allSelectedOptionsPriceArr[3] +
+            allSelectedOptionsPriceArr[4] +
+            allSelectedOptionsPriceArr[5]
+    
+        paintRenewalPrice = 
+            allSelectedOptionsPriceArr[6] + 
+            allSelectedOptionsPriceArr[7]
+
+        foilPrice =
+            allSelectedOptionsPriceArr[12] + 
+            allSelectedOptionsPriceArr[13] +
+            allSelectedOptionsPriceArr[14]
+
+        paintProtectPrice = 
+            allSelectedOptionsPriceArr[8] + 
+            allSelectedOptionsPriceArr[9] +
+            allSelectedOptionsPriceArr[10] +
+            allSelectedOptionsPriceArr[11]
+
+        // interiorProtectPrice = ???
+
+        additionalServicesPrice =
+            allSelectedOptionsPriceArr[15] + 
+            allSelectedOptionsPriceArr[16] +
+            allSelectedOptionsPriceArr[17] +
+            allSelectedOptionsPriceArr[18] +
+            allSelectedOptionsPriceArr[19] +
+            allSelectedOptionsPriceArr[20]
+    
+        const totalPriceLoc = document.querySelectorAll(".totalPrice")
+        totalPriceLoc.forEach((elem)=>{
+            elem.innerText = totalPrice + " pln"
+        })
+
+        // if (totalTime > 8) {
+            workDay =  Math.ceil(totalTime / 8) + " dni"
+            if (totalTime > 0 && totalTime <=8) {workDay = "1 dzień"}
+        // }
+
+        const totalTimeLoc = document.querySelectorAll(".totalTime")
+        totalTimeLoc.forEach((elem)=>{
+            elem.innerText = `${totalTime}h / ${workDay}`
+        })
+
+        const stylingPriceLoc = document.querySelector(".stylingPrice")
+        stylingPriceLoc.innerText = stylingPrice
+
+        const paintRenewalPriceLoc = document.querySelector(".paintRenewalPrice")
+        paintRenewalPriceLoc.innerText = paintRenewalPrice
+
+        const foilPriceLoc = document.querySelector(".foilPrice")
+        foilPriceLoc.innerText = foilPrice
+
+        const paintProtectPriceLoc = document.querySelector(".paintProtectPrice")
+        paintProtectPriceLoc.innerText = paintProtectPrice
+
+        // const interiorProtectPriceLoc = document.querySelector(".interiorProtectPrice")
+        // interiorProtectPriceLoc.innerText = interiorProtectPrice
+
+        const additionalServicesPriceLoc = document.querySelector(".additionalServicesPrice")
+        additionalServicesPriceLoc.innerText = additionalServicesPrice
     }
 }
 
 let totalTime = 0
+let workDay = 0
 let allSelectedOptionsTimeArr = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
 
 const calculateTime = (item_name, item_no, state) => {
@@ -395,14 +540,14 @@ const calculateTime = (item_name, item_no, state) => {
         item_name !== "page3_1" && 
         item_name !== "page3_2" && 
         item_name !== "page3_3" && 
-        item_name !== "page3_4" && 
+        // item_name !== "page3_4" && 
         item_name !== "page3_5" &&
-        item_name !== "page3_2_1" &&
-        item_name !== "page3_4_1" &&
-        item_name !== "page3_4_2" &&
-        item_name !== "page3_4_3" &&
-        item_name !== "page3_4_4" &&
-        item_name !== "page3_4_5"
+        item_name !== "page3_2_1"
+    //     item_name !== "page3_4_1" &&
+    //     item_name !== "page3_4_2" &&
+    //     item_name !== "page3_4_3" &&
+    //     item_name !== "page3_4_4" &&
+    //     item_name !== "page3_4_5"
     ) {
         let pricingIndex
 
@@ -448,22 +593,25 @@ const calculateTime = (item_name, item_no, state) => {
                 return acc + curr
             },0)
 
-            let workDay = 0
+            // if (totalTime > 8) {
+            //     workDay =  Math.ceil(totalTime / 8)
+            // }
 
-            if (totalTime > 8) {
-                workDay =  Math.ceil(totalTime / 8)
-            }
+            workDay =  Math.ceil(totalTime / 8) + " dni"
+            if (totalTime > 0 && totalTime <=8) {workDay = "1 dzień"}
     
             const totalTimeLoc = document.querySelectorAll(".totalTime")
             totalTimeLoc.forEach((elem)=>{
-                elem.innerText = `${totalTime}h / ${workDay} dni`
+                elem.innerText = `${totalTime}h / ${workDay}`
             })
         }
     }
 }
 
-let interiorProtectItems = []
-let joinedInteriorProtectItems = ""
+// let interiorProtectItems = []
+// let joinedInteriorProtectItems = ""
+let stylingItems = []
+let joinedStylingItems = ""
 let additionalServicesItems = []
 let joinedAdditionalServicesItems = ""
 
@@ -556,37 +704,59 @@ contentArrLoc.forEach((elem)=>{
                     calculateTime(item_name, item_no, state)
                 }
 
-                const interiorProtectItemsLoc = document.querySelector(".summary-page .interiorProtectItems")
-                if (item_name === "page3_4_1" || item_name === "page3_4_2" || item_name === "page3_4_3" || item_name === "page3_4_4" || item_name === "page3_4_5") {
+                // const interiorProtectItemsLoc = document.querySelector(".summary-page .interiorProtectItems")
+                // if (item_name === "page3_4_1" || item_name === "page3_4_2" || item_name === "page3_4_3" || item_name === "page3_4_4" || item_name === "page3_4_5") {
+
+                //     let item = ""
+                //     if (item_name === "page3_4_1") { item = "Podstawowe czyszczenie" }
+                //     if (item_name === "page3_4_2") { item = "Detailing - tapicerka materiałowa" }
+                //     if (item_name === "page3_4_3") { item = "Detailing - tapicerka skórzana" }
+                //     if (item_name === "page3_4_4") { item = "Czyszczenie tapicerka skórzana" }
+                //     if (item_name === "page3_4_5") { item = "Czyszczenie tapicerka materiałowa" }
+                    
+                //     if (state) {
+                //         interiorProtectItems.push(item)
+                //     } else {
+                //         const index = interiorProtectItems.indexOf(item)
+                //         interiorProtectItems.splice(index,1)
+                //     }
+
+                //     joinedInteriorProtectItems = interiorProtectItems.join(",<br>")
+                //     interiorProtectItemsLoc.innerHTML = joinedInteriorProtectItems
+                // }
+
+                const stylingItemsLoc = document.querySelector(".summary-page .stylingItems")
+                if (item_name === "page3_1_1" || item_name === "page3_1_2" || item_name === "page3_1_3" || item_name === "page3_1_4" || item_name === "page3_1_5" || item_name === "page3_1_6") {
 
                     let item = ""
-                    if (item_name === "page3_4_1") { item = "Podstawowe czyszczenie" }
-                    if (item_name === "page3_4_2") { item = "Detailing - tapicerka materiałowa" }
-                    if (item_name === "page3_4_3") { item = "Detailing - tapicerka skórzana" }
-                    if (item_name === "page3_4_4") { item = "Czyszczenie tapicerka skórzana" }
-                    if (item_name === "page3_4_5") { item = "Czyszczenie tapicerka materiałowa" }
+                    if (item_name === "page3_1_1") { item = "Przyciemnianie&nbsp;szyb" }
+                    if (item_name === "page3_1_2") { item = "Przyciemnianie&nbsp;lamp" }
+                    if (item_name === "page3_1_3") { item = "Dechroming" }
+                    if (item_name === "page3_1_4") { item = "Zmiana koloru&nbsp;całego&nbsp;auta" }
+                    if (item_name === "page3_1_5") { item = "Oklejanie&nbsp;dachu" }
+                    if (item_name === "page3_1_6") { item = "Oklejanie&nbsp;lusterek" }
                     
                     if (state) {
-                        interiorProtectItems.push(item)
+                        stylingItems.push(item)
                     } else {
-                        const index = interiorProtectItems.indexOf(item)
-                        interiorProtectItems.splice(index,1)
+                        const index = stylingItems.indexOf(item)
+                        stylingItems.splice(index,1)
                     }
 
-                    joinedInteriorProtectItems = interiorProtectItems.join(",<br>")
-                    interiorProtectItemsLoc.innerHTML = joinedInteriorProtectItems
+                    joinedStylingItems = stylingItems.join(", ")
+                    stylingItemsLoc.innerHTML = joinedStylingItems
                 }
 
                 const additionalServicesItemsLoc = document.querySelector(".summary-page .additionalServicesItems")
                 if (item_name === "page3_5_1" || item_name === "page3_5_2" || item_name === "page3_5_3" || item_name === "page3_5_4" || item_name === "page3_5_5" || item_name === "page3_5_6") {
 
                     let item = ""
-                    if (item_name === "page3_5_1") { item = "Reflektory cermamika" }
-                    if (item_name === "page3_5_2") { item = "Reflektory folia" }
-                    if (item_name === "page3_5_3") { item = "Felgi ceramika" }
-                    if (item_name === "page3_5_4") { item = "Szyby ceramika" }
-                    if (item_name === "page3_5_5") { item = "Impregnacja dach cabrio" }
-                    if (item_name === "page3_5_6") { item = "Woskowanie lakieru bez polerowania" }
+                    if (item_name === "page3_5_1") { item = "Reflektory&nbsp;cermamika" }
+                    if (item_name === "page3_5_2") { item = "Reflektory&nbsp;folia" }
+                    if (item_name === "page3_5_3") { item = "Felgi&nbsp;ceramika" }
+                    if (item_name === "page3_5_4") { item = "Szyby&nbsp;ceramika" }
+                    if (item_name === "page3_5_5") { item = "Impregnacja&nbsp;dach&nbsp;cabrio" }
+                    if (item_name === "page3_5_6") { item = "Woskowanie&nbsp;lakieru&nbsp;bez&nbsp;polerowania" }
                     
                     if (state) {
                         additionalServicesItems.push(item)
@@ -595,7 +765,7 @@ contentArrLoc.forEach((elem)=>{
                         additionalServicesItems.splice(index,1)
                     }
 
-                    joinedAdditionalServicesItems = additionalServicesItems.join(",<br>")
+                    joinedAdditionalServicesItems = additionalServicesItems.join(", ")
                     additionalServicesItemsLoc.innerHTML = joinedAdditionalServicesItems
                 }
             }
