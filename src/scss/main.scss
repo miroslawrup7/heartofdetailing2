@@ -241,6 +241,7 @@ html {
         display: flex;
         flex-direction: column;
         gap: 64px;
+        width: 100%;
 
         .main {
             display: flex;
@@ -773,6 +774,423 @@ html {
             img {
                 height: 9px;
             }
+        }
+    }
+}
+
+@media(max-width: 1340px) {
+
+    $base-width: 960px;
+
+    .container {
+        width: calc($base-width + 2*$base-padding);
+    }
+
+    .form-pages {
+        .form-page {
+            width: calc($base-width + 2*$base-padding);
+
+            .configurator-box {
+                width: $base-width;
+
+
+                .configurator-box-wrapper {
+                    gap: 36px;
+                    padding: 48px;
+
+                    .main {
+                        .content {
+                            .box {
+                                &.l-w-50 {
+                                    flex-basis: calc(50% - $box-gap / 2);
+                                }
+                            }
+                        }
+                    }
+
+                    .summary {
+                        flex-direction: column;
+                        gap: 36px;
+
+                        .notes-wrapper {
+                            width: 600px;
+                            order: 1;
+                            align-self: flex-end;
+                            text-align: right;
+                        }
+
+                        .pricing-wrapper {
+                            order: 0;
+                            align-self: flex-end;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .configuration-box-container {
+        width: $base-width;
+        flex-direction: column;
+
+        .reservation {
+            margin-bottom: 36px;
+
+            .reservation-box {
+                width: auto;
+                margin-left: 0;
+                margin-top: 32px;
+                padding: 48px 38px;
+                gap: 36px;
+
+                .text {
+                    text-align: center;
+                }
+
+                .buttons {
+                    justify-content: center;
+
+                    .buttons-wrapper {
+                        width: 300px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 1020px) {
+
+    $base-width: 700px;
+
+    .container {
+        width: calc($base-width + 2*$base-padding);
+    }
+
+    .form-pages {
+        .form-page {
+            width: calc($base-width + 2*$base-padding);
+
+            .configurator-box {
+                width: $base-width;
+
+
+                .configurator-box-wrapper {
+                    gap: 36px;
+                    padding: 48px;
+
+                    .main {
+                        .content {
+                            .box {
+
+                                // &.l-w-50 {
+                                //     flex-basis: calc(50% - $box-gap / 2);
+                                // }
+                                &.m-w-50 {
+                                    flex-basis: calc(50% - $box-gap / 2);
+                                }
+
+                                &.m-w-100 {
+                                    flex-basis: 100%;
+                                }
+                            }
+                        }
+
+                        .buttons:has(.skip-long) {
+                            position: relative;
+                            margin-top: 70px;
+
+                            .buttons-wrapper:has(.skip-long) {
+                                .button-parent-transparent {
+                                    &.skip-long {
+                                        position: absolute;
+                                        bottom: 50px;
+                                        right: 50%;
+                                        transform: translateX(50%);
+                                        width: max-content;
+                                        margin-bottom: 30px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .summary {
+                        flex-direction: column;
+                        gap: 36px;
+
+                        .notes-wrapper {
+                            width: 600px;
+                            order: 1;
+                            align-self: flex-end;
+                            text-align: center;
+                        }
+
+                        .pricing-wrapper {
+                            order: 0;
+                            align-self: center;
+                        }
+                    }
+
+                    .summary-box {
+                        .items-box {
+                            .item {
+                                .top {
+                                    .item-name {
+                                        overflow: hidden;
+                                        margin-right: 20px;
+                                    }
+
+                                    .item-value {
+                                        width: 250px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .total-price {
+                            width: 250px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .configuration-box-container {
+        width: $base-width;
+        flex-direction: column;
+
+        .reservation {
+            margin-bottom: 36px;
+
+            .reservation-box {
+                width: auto;
+                margin-left: 0;
+                margin-top: 32px;
+                padding: 48px 38px;
+                gap: 36px;
+
+                .text {
+                    text-align: center;
+                }
+
+                .buttons {
+                    justify-content: center;
+
+                    .buttons-wrapper {
+                        width: 300px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 768px) {
+
+    // $base-width: 300px;
+    $base-width: 360px;
+    $base-padding: 20px;
+
+    .container {
+        width: calc($base-width + 2*$base-padding);
+        // width: $base-width;
+    }
+
+    .head-button {
+        font-size: 14px;
+        padding: 8px 20px;
+    }
+
+    .form-pages {
+        .form-page {
+            width: calc($base-width + 2*$base-padding);
+            padding: 12px;
+
+            .configurator-box {
+                width: 100%;
+
+
+                .configurator-box-wrapper {
+                    gap: 24x;
+                    padding: 16px;
+
+                    .main {
+                        .head-box {
+                            position: relative;
+
+                            .titles {
+                                .title {
+                                    font-size: 26px;
+                                }
+                            }
+
+                            .steps-bars {
+                                position: absolute;
+                                right: 5px;
+                                top: -42px;
+                                flex-direction: column;
+
+                                .desc {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        .content {
+                            .box {
+
+                                padding: 16px;
+
+                                &.m-w-50 {
+                                    flex-basis: calc(50% - $box-gap / 2);
+                                }
+
+                                &.m-w-100 {
+                                    flex-basis: 100%;
+                                }
+
+                                &.s-w-100 {
+                                    flex-basis: 100%;
+                                }
+                            }
+                        }
+
+                        .buttons:has(.skip-long) {
+                            position: relative;
+                            margin-top: 80px;
+
+                            .buttons-wrapper:has(.skip-long) {
+                                .button-parent-transparent {
+                                    &.skip-long {
+                                        position: absolute;
+                                        bottom: 50px;
+                                        right: 50%;
+                                        transform: translateX(50%);
+                                        width: 100%;
+                                        margin-bottom: 30px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .summary {
+                        flex-direction: column;
+                        gap: 36px;
+
+                        .notes-wrapper {
+                            width: 100%;
+                            order: 1;
+                            align-self: flex-end;
+                            text-align: right;
+                        }
+
+                        .pricing-wrapper {
+                            order: 0;
+                            flex-direction: column;
+                            width: auto;
+                            align-self: flex-end;
+
+                            .value {
+                                font-size: 28px;
+                                text-align: right;
+                            }
+
+                            .note {
+                                font-size: 12px;
+                                text-align: right;
+                            }
+
+                            .cost {
+                                .value-wrapper {
+                                    justify-content: flex-end;
+                                }
+                            }
+                        }
+                    }
+
+                    .summary-box {
+                        .items-box {
+                            .item {
+                                .top {
+                                    flex-direction: column;
+
+                                    .item-name {
+                                        overflow: hidden;
+                                        margin-right: 20px;
+                                        order: 1;
+                                        align-self: flex-start;
+                                        width: 100%;
+                                        font-size: 18px;
+                                    }
+
+                                    .item-value {
+                                        width: auto;
+                                        align-self: flex-end;
+                                    }
+                                }
+
+                                .bottom {
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+
+                        .total-price {
+                            width: 250px;
+                            margin-top: 50px;
+                        }
+                    }
+
+                    .copy-to-email {
+                        .input-container {
+                            .checkbox-and-button {
+                                flex-direction: column;
+                                align-items: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .configuration-box-container {
+        width: 100%;
+        flex-direction: column;
+
+        .reservation {
+            margin-bottom: 36px;
+
+            .reservation-box {
+                width: auto;
+                margin-left: 0;
+                margin-top: 32px;
+                padding: 48px 38px;
+                gap: 36px;
+
+                .text {
+                    text-align: center;
+                    font-size: 24px;
+                }
+
+                .buttons {
+                    justify-content: center;
+
+                    .buttons-wrapper {
+                        width: 300px;
+                    }
+                }
+            }
+        }
+    }
+
+    .buttons {
+        .buttons-wrapper {
+            align-self: flex-end;
+            flex-direction: column;
         }
     }
 }

@@ -72,6 +72,16 @@ const movePage = (factor, direction) => {
     const containerWidthWithoutBorder = containerWidth * factor - leftContainerBorder - rightContainerBorder - leftPagesBorder - rightPagesBorder
     const newLeftValue = actualPosition + direction * containerWidthWithoutBorder
 
+
+    // console.log("actualPosition", actualPosition)
+    // console.log("containerWidth", containerWidth)
+    // console.log("leftContainerBorder", leftContainerBorder)
+    // console.log("rightContainerBorder", rightContainerBorder)
+    // console.log("leftPagesBorder", leftPagesBorder)
+    // console.log("rightPagesBorder", rightPagesBorder)
+    // console.log("containerWidthWithoutBorder", containerWidthWithoutBorder)
+    // console.log("newLeftValue", newLeftValue)
+
     let animation_time = 0.5 
     let delay_time = 500
     

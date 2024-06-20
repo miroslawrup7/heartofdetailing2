@@ -196,6 +196,7 @@ html {
   display: flex;
   flex-direction: column;
   gap: 64px;
+  width: 100%;
 }
 .configurator-box .configurator-box-wrapper .main {
   display: flex;
@@ -634,5 +635,290 @@ html {
 }
 .buttons .buttons-wrapper .button img {
   height: 9px;
+}
+
+@media (max-width: 1340px) {
+  .container {
+    width: 1020px;
+  }
+
+  .form-pages .form-page {
+    width: 1020px;
+  }
+  .form-pages .form-page .configurator-box {
+    width: 960px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper {
+    gap: 36px;
+    padding: 48px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .content .box.l-w-50 {
+    flex-basis: calc(50% - 6px);
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary {
+    flex-direction: column;
+    gap: 36px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary .notes-wrapper {
+    width: 600px;
+    order: 1;
+    align-self: flex-end;
+    text-align: right;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary .pricing-wrapper {
+    order: 0;
+    align-self: flex-end;
+  }
+
+  .configuration-box-container {
+    width: 960px;
+    flex-direction: column;
+  }
+  .configuration-box-container .reservation {
+    margin-bottom: 36px;
+  }
+  .configuration-box-container .reservation .reservation-box {
+    width: auto;
+    margin-left: 0;
+    margin-top: 32px;
+    padding: 48px 38px;
+    gap: 36px;
+  }
+  .configuration-box-container .reservation .reservation-box .text {
+    text-align: center;
+  }
+  .configuration-box-container .reservation .reservation-box .buttons {
+    justify-content: center;
+  }
+  .configuration-box-container .reservation .reservation-box .buttons .buttons-wrapper {
+    width: 300px;
+  }
+}
+@media (max-width: 1020px) {
+  .container {
+    width: 760px;
+  }
+
+  .form-pages .form-page {
+    width: 760px;
+  }
+  .form-pages .form-page .configurator-box {
+    width: 700px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper {
+    gap: 36px;
+    padding: 48px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .content .box.m-w-50 {
+    flex-basis: calc(50% - 6px);
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .content .box.m-w-100 {
+    flex-basis: 100%;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .buttons:has(.skip-long) {
+    position: relative;
+    margin-top: 70px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .buttons:has(.skip-long) .buttons-wrapper:has(.skip-long) .button-parent-transparent.skip-long {
+    position: absolute;
+    bottom: 50px;
+    right: 50%;
+    transform: translateX(50%);
+    width: -moz-max-content;
+    width: max-content;
+    margin-bottom: 30px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary {
+    flex-direction: column;
+    gap: 36px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary .notes-wrapper {
+    width: 600px;
+    order: 1;
+    align-self: flex-end;
+    text-align: center;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary .pricing-wrapper {
+    order: 0;
+    align-self: center;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary-box .items-box .item .top .item-name {
+    overflow: hidden;
+    margin-right: 20px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary-box .items-box .item .top .item-value {
+    width: 250px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary-box .total-price {
+    width: 250px;
+  }
+
+  .configuration-box-container {
+    width: 700px;
+    flex-direction: column;
+  }
+  .configuration-box-container .reservation {
+    margin-bottom: 36px;
+  }
+  .configuration-box-container .reservation .reservation-box {
+    width: auto;
+    margin-left: 0;
+    margin-top: 32px;
+    padding: 48px 38px;
+    gap: 36px;
+  }
+  .configuration-box-container .reservation .reservation-box .text {
+    text-align: center;
+  }
+  .configuration-box-container .reservation .reservation-box .buttons {
+    justify-content: center;
+  }
+  .configuration-box-container .reservation .reservation-box .buttons .buttons-wrapper {
+    width: 300px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    width: 400px;
+  }
+
+  .head-button {
+    font-size: 14px;
+    padding: 8px 20px;
+  }
+
+  .form-pages .form-page {
+    width: 400px;
+    padding: 12px;
+  }
+  .form-pages .form-page .configurator-box {
+    width: 100%;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper {
+    gap: 24x;
+    padding: 16px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .head-box {
+    position: relative;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .head-box .titles .title {
+    font-size: 26px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .head-box .steps-bars {
+    position: absolute;
+    right: 5px;
+    top: -42px;
+    flex-direction: column;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .head-box .steps-bars .desc {
+    display: none;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .content .box {
+    padding: 16px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .content .box.m-w-50 {
+    flex-basis: calc(50% - 6px);
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .content .box.m-w-100 {
+    flex-basis: 100%;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .content .box.s-w-100 {
+    flex-basis: 100%;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .buttons:has(.skip-long) {
+    position: relative;
+    margin-top: 80px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .main .buttons:has(.skip-long) .buttons-wrapper:has(.skip-long) .button-parent-transparent.skip-long {
+    position: absolute;
+    bottom: 50px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary {
+    flex-direction: column;
+    gap: 36px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary .notes-wrapper {
+    width: 100%;
+    order: 1;
+    align-self: flex-end;
+    text-align: right;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary .pricing-wrapper {
+    order: 0;
+    flex-direction: column;
+    width: auto;
+    align-self: flex-end;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary .pricing-wrapper .value {
+    font-size: 28px;
+    text-align: right;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary .pricing-wrapper .note {
+    font-size: 12px;
+    text-align: right;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary .pricing-wrapper .cost .value-wrapper {
+    justify-content: flex-end;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary-box .items-box .item .top {
+    flex-direction: column;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary-box .items-box .item .top .item-name {
+    overflow: hidden;
+    margin-right: 20px;
+    order: 1;
+    align-self: flex-start;
+    width: 100%;
+    font-size: 18px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary-box .items-box .item .top .item-value {
+    width: auto;
+    align-self: flex-end;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary-box .items-box .item .bottom {
+    font-size: 12px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .summary-box .total-price {
+    width: 250px;
+    margin-top: 50px;
+  }
+  .form-pages .form-page .configurator-box .configurator-box-wrapper .copy-to-email .input-container .checkbox-and-button {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .configuration-box-container {
+    width: 100%;
+    flex-direction: column;
+  }
+  .configuration-box-container .reservation {
+    margin-bottom: 36px;
+  }
+  .configuration-box-container .reservation .reservation-box {
+    width: auto;
+    margin-left: 0;
+    margin-top: 32px;
+    padding: 48px 38px;
+    gap: 36px;
+  }
+  .configuration-box-container .reservation .reservation-box .text {
+    text-align: center;
+    font-size: 24px;
+  }
+  .configuration-box-container .reservation .reservation-box .buttons {
+    justify-content: center;
+  }
+  .configuration-box-container .reservation .reservation-box .buttons .buttons-wrapper {
+    width: 300px;
+  }
+
+  .buttons .buttons-wrapper {
+    align-self: flex-end;
+    flex-direction: column;
+  }
 }
 /*# sourceMappingURL=main.css.map */
