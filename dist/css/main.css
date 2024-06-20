@@ -777,9 +777,9 @@ html {
     width: 300px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 760px) {
   .container {
-    width: 400px;
+    width: calc(100vw - 40px + 40px);
   }
 
   .head-button {
@@ -788,7 +788,7 @@ html {
   }
 
   .form-pages .form-page {
-    width: 400px;
+    width: calc(100vw - 40px + 40px);
     padding: 12px;
   }
   .form-pages .form-page .configurator-box {

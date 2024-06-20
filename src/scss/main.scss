@@ -987,11 +987,12 @@ html {
     }
 }
 
-@media(max-width: 768px) {
+@media(max-width: 760px) {
 
     // $base-width: 300px;
-    $base-width: 360px;
+
     $base-padding: 20px;
+    $base-width: calc(100vw - 2*$base-padding);
 
     .container {
         width: calc($base-width + 2*$base-padding);
