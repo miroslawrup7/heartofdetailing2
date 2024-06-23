@@ -912,14 +912,14 @@ const validateAll = (e) => {
                         } else {
                             console.log("status !== 'sent'. E-mail nie został wysłany")
                             // loadingWrapper.style.display = "none"
-                            successLoc.innerText = "E-mail nie został wysłany - spróbuj ponownie za chwilę"
+                            errorLoc.innerText = "E-mail nie został wysłany - spróbuj ponownie za chwilę"
                             // thanksContainer.style.display = "flex"
                             // getPDFFormContainer.style.display = "none"
                         }
                     } else {
                         console.log("response nie jest ok. E-mail nie został wysłany")
                         // loadingWrapper.style.display = "none"
-                        successLoc.innerText= "E-mail nie został wysłany"
+                        errorLoc.innerText = "E-mail nie został wysłany"
                         // thanksContainer.style.display = "flex"
                         // getPDFFormContainer.style.display = "none"
                     }
