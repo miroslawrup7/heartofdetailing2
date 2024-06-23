@@ -5,8 +5,25 @@ import {pricingCostObj, pricingTimeObj} from './pricing.js'
 const containerLoc = document.querySelector(".container")
 const formPagesLoc = document.querySelector(".form-pages")
 const formPageArrLoc = document.querySelectorAll(".form-page")
-const buttonNextArrLoc = document.querySelectorAll(".button.next")
+const buttonNextArrLoc = document.querySelectorAll(".button.next:not(.send-btn)")
 const buttonPrevArrLoc = document.querySelectorAll(".button.prev")
+
+const carConditionLoc = document.querySelector(".summary-page .carCondition")
+const carSizeLoc = document.querySelector(".summary-page .carSize")
+
+const paintRenewalItemsLoc = document.querySelector(".summary-page .paintRenewalItems")
+const foilItemsLoc = document.querySelector(".summary-page .foilItems")
+const paintProtectItemsLoc = document.querySelector(".summary-page .paintProtectItems")
+const stylingItemsLoc = document.querySelector(".summary-page .stylingItems")
+const additionalServicesItemsLoc = document.querySelector(".summary-page .additionalServicesItems")
+
+const stylingPriceLoc = document.querySelector(".stylingPrice")
+const paintRenewalPriceLoc = document.querySelector(".paintRenewalPrice")
+const foilPriceLoc = document.querySelector(".foilPrice")
+const paintProtectPriceLoc = document.querySelector(".paintProtectPrice")       
+const additionalServicesPriceLoc = document.querySelector(".additionalServicesPrice") 
+
+const endTotalPriceLoc = document.querySelector(".summary-page .totalPrice")
 
 // stan auta
 let page1; // nowe 1, używane 2
@@ -72,7 +89,6 @@ const movePage = (factor, direction) => {
     const containerWidthWithoutBorder = containerWidth * factor - leftContainerBorder - rightContainerBorder - leftPagesBorder - rightPagesBorder
     const newLeftValue = actualPosition + direction * containerWidthWithoutBorder
 
-
     // console.log("actualPosition", actualPosition)
     // console.log("containerWidth", containerWidth)
     // console.log("leftContainerBorder", leftContainerBorder)
@@ -99,6 +115,78 @@ const movePage = (factor, direction) => {
         
 }
 
+// walidacje
+
+const validateEmpty = (value) => {
+    if (!value) return [false, "Błąd: Pole adres e-mail nie może być puste!"]
+    return [true, ""]
+}
+
+const validateEmail = (value) => {
+    if (!String(value).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+       return [false, "Błąd: Adres e-mail jest nieprawidłowy!"]
+    }
+    return [true, ""]
+}
+
+const validateCheckbox = (value)=> {
+    if (!value.checked) return [false, "Bład: Wymagane zaznaczenie zgody!"]
+    return [true, ""]
+}
+
+
+const sendBtn = document.querySelector(".send-btn")
+const errorLoc = document.querySelector(".error-box")
+const rodoCheckboxLoc = document.querySelector("#rodo")
+const successLoc = document.querySelector(".success-box")
+
+sendBtn.addEventListener("click", ()=> {
+
+    let validateAll = []
+
+    console.log(validateAll)
+
+    jump: {
+    validateAll = validateEmpty(emailInput.value)
+    if (!validateAll[0]) {break jump}
+    validateAll = validateEmail(emailInput.value)
+    if (!validateAll[0]) {break jump}
+    validateAll = validateCheckbox(rodoCheckboxLoc)
+  }
+
+    if (validateAll[0]) {
+        errorLoc.innerText = validateAll[1]
+        buttonSendLoc.click()
+    } else {
+        errorLoc.innerText = validateAll[1]
+    }
+
+    
+})
+
+const formInputsArr = document.querySelectorAll("#hidden-summary-form input")
+const emailInput = document.querySelector(".summary-page #email")
+
+const readDataForEmail = () => {
+    formInputsArr[0].value = carConditionLoc.innerText
+    formInputsArr[1].value = carSizeLoc.innerText
+    formInputsArr[2].value = stylingItemsLoc.innerText
+    formInputsArr[3].value = paintRenewalItemsLoc.innerText
+    formInputsArr[4].value = foilItemsLoc.innerText
+    formInputsArr[5].value = paintProtectItemsLoc.innerText
+    formInputsArr[6].value = additionalServicesItemsLoc.innerText
+
+    formInputsArr[7].value = stylingPriceLoc.innerText
+    formInputsArr[8].value = paintRenewalPriceLoc.innerText
+    formInputsArr[9].value = foilPriceLoc.innerText
+    formInputsArr[10].value = paintProtectPriceLoc.innerText
+    formInputsArr[11].value = additionalServicesPriceLoc.innerText
+
+    formInputsArr[12].value = endTotalPriceLoc.innerText.slice(0, -4)
+
+    formInputsArr[13].value = emailInput.value
+}
+
 buttonNextArrLoc.forEach((elem) => {
     elem.addEventListener("click", (e)=> {
 
@@ -113,12 +201,14 @@ buttonNextArrLoc.forEach((elem) => {
         if (actualPage.classList.contains("page1")) {
             if (page1 !== undefined) {
                 movePage(1, -1)
+                readDataForEmail()
             }
         }
 
         if (actualPage.classList.contains("page2")) {
             if (page2 !== undefined) {
                 movePage(1, -1)
+                readDataForEmail()
             }
         }
 
@@ -131,18 +221,21 @@ buttonNextArrLoc.forEach((elem) => {
         if (actualPage.classList.contains("page3_1")) {
             if (page3_1Array.some((item)=>(item !== undefined && item !== false))) {
                 movePage(1, -1)
+                readDataForEmail()
             }
         }
         if (actualPage.classList.contains("page3_2")) {
             if (page3_2_1 !== undefined &&
                 page3_2_2 !== undefined &&
                 page3_2_3 !== undefined) {
-                 movePage(1, -1)
+                movePage(1, -1)
+                readDataForEmail()
             }
         }
         if (actualPage.classList.contains("page3_3")) {
             if (page3_3_1 !== undefined ){
                 movePage(1, -1)
+                readDataForEmail()
             }
         }
         // if (actualPage.classList.contains("page3_4")) {
@@ -153,6 +246,7 @@ buttonNextArrLoc.forEach((elem) => {
         if (actualPage.classList.contains("page3_5")) {
             if (page3_5Array.some((item)=>(item !== undefined && item !== false))) {
                 movePage(1, -1)
+                readDataForEmail()
             }
         }
     })
@@ -363,23 +457,14 @@ const calculateCost = (item_name, item_no, state) => {
                 elem.innerText = totalPrice + " pln"
             })
     
-            const stylingPriceLoc = document.querySelector(".stylingPrice")
             stylingPriceLoc.innerText = stylingPrice
-    
-            const paintRenewalPriceLoc = document.querySelector(".paintRenewalPrice")
             paintRenewalPriceLoc.innerText = paintRenewalPrice
-
-            const foilPriceLoc = document.querySelector(".foilPrice")
             foilPriceLoc.innerText = foilPrice
-
-            const paintProtectPriceLoc = document.querySelector(".paintProtectPrice")
             paintProtectPriceLoc.innerText = paintProtectPrice
+            additionalServicesPriceLoc.innerText = additionalServicesPrice
 
             // const interiorProtectPriceLoc = document.querySelector(".interiorProtectPrice")
             // interiorProtectPriceLoc.innerText = interiorProtectPrice
-
-            const additionalServicesPriceLoc = document.querySelector(".additionalServicesPrice")
-            additionalServicesPriceLoc.innerText = additionalServicesPrice
         }
     }
 }
@@ -655,29 +740,26 @@ contentArrLoc.forEach((elem)=>{
 
                 changeVariableOnce(el.dataset.var_name, el.dataset.var_value)
 
-                const carConditionLoc = document.querySelector(".summary-page .carCondition")
+                
                 if (item_name === "page1") {
                     if (item_no === "1") { carConditionLoc.innerText = "Nowe" }
                     if (item_no === "2") { carConditionLoc.innerText = "Używane" }
                 }
 
-                const carSizeLoc = document.querySelector(".summary-page .carSize")
                 if (item_name === "page2") {
                     if (item_no === "0") { carSizeLoc.innerText = "Małe" }
                     if (item_no === "1") { carSizeLoc.innerText = "Średnie" }
                     if (item_no === "2") { carSizeLoc.innerText = "Duże i SUV" }
                     if (item_no === "3") { carSizeLoc.innerText = "Duże SUV i większe" }
                 }
-
-                const paintRenewalItemsLoc = document.querySelector(".summary-page .paintRenewalItems")
+                
                 if (item_name === "page3_2_2") {
                     let paintRenewalItem = ""
                     if (item_no === "1") { paintRenewalItem = "Odświeżanie lakieru" }
                     if (item_no === "2") { paintRenewalItem = "Korekta lakieru" }
                     paintRenewalItemsLoc.innerText = paintRenewalItem
                 }
-
-                const foilItemsLoc = document.querySelector(".summary-page .foilItems")
+                
                 if (item_name === "page3_3_1") {
                     let foilItems = ""
                     if (item_no === "1") { foilItems = "Folia bikini" }
@@ -685,8 +767,7 @@ contentArrLoc.forEach((elem)=>{
                     if (item_no === "3") { foilItems = "Folia full body" }
                     foilItemsLoc.innerText = foilItems
                 }
-
-                const paintProtectItemsLoc = document.querySelector(".summary-page .paintProtectItems")
+                
                 if (item_name === "page3_2_3") {
                     let paintProtectItems = ""
                     if (item_no === "1") { paintProtectItems = "Woskowanie" }
@@ -735,7 +816,6 @@ contentArrLoc.forEach((elem)=>{
                 //     interiorProtectItemsLoc.innerHTML = joinedInteriorProtectItems
                 // }
 
-                const stylingItemsLoc = document.querySelector(".summary-page .stylingItems")
                 if (item_name === "page3_1_1" || item_name === "page3_1_2" || item_name === "page3_1_3" || item_name === "page3_1_4" || item_name === "page3_1_5" || item_name === "page3_1_6") {
 
                     let item = ""
@@ -757,7 +837,6 @@ contentArrLoc.forEach((elem)=>{
                     stylingItemsLoc.innerHTML = joinedStylingItems
                 }
 
-                const additionalServicesItemsLoc = document.querySelector(".summary-page .additionalServicesItems")
                 if (item_name === "page3_5_1" || item_name === "page3_5_2" || item_name === "page3_5_3" || item_name === "page3_5_4" || item_name === "page3_5_5" || item_name === "page3_5_6") {
 
                     let item = ""
@@ -797,3 +876,65 @@ contentArrLoc.forEach((elem)=>{
         })
     })
 })
+
+// wysyłanie formularza
+
+const buttonSendLoc = document.querySelector(".send-form")
+const form = document.querySelector("#hidden-summary-form")
+
+const validateAll = (e) => {
+    e.preventDefault()
+
+    let validationPass = true;
+
+    console.log("Wysyłam")
+
+    if (validationPass) {
+        grecaptcha.ready(function() {
+            grecaptcha.execute("6Lf2hcIpAAAAAO1sgP7bkMbS_dHflAHZV8bG8eFO", {action: "contact"})
+            .then(async function(token){
+                let recaptchaResponse = document.getElementById("recaptchaResponse")
+                recaptchaResponse.value = token
+                let response
+                // fetch("./php/send.php", {method: "POST", body: new FormData(form)})
+                // .then((response)=>{
+                response = await fetch("./php/send.php", {method: "POST", body: new FormData(form)})
+                    if (response.ok) {
+                        const indexEqual = response.url.indexOf("=")
+                        const status = (response.url).substr(indexEqual + 1, response.url.length - indexEqual);
+
+                        if (status === "sent") {
+                            console.log("status === 'sent'. E-mail został wysłany")
+                            // loadingWrapper.style.display = "none"
+                            successLoc.innerText = "Dziękujemy. E-mail z wyceną przesłany na podany adres."
+                            // thanksContainer.style.display = "flex"
+                            // getPDFFormContainer.style.display = "flex"
+                        } else {
+                            console.log("status !== 'sent'. E-mail nie został wysłany")
+                            // loadingWrapper.style.display = "none"
+                            successLoc.innerText = "E-mail nie został wysłany - spróbuj ponownie za chwilę"
+                            // thanksContainer.style.display = "flex"
+                            // getPDFFormContainer.style.display = "none"
+                        }
+                    } else {
+                        console.log("response nie jest ok. E-mail nie został wysłany")
+                        // loadingWrapper.style.display = "none"
+                        successLoc.innerText= "E-mail nie został wysłany"
+                        // thanksContainer.style.display = "flex"
+                        // getPDFFormContainer.style.display = "none"
+                    }
+                // }) 
+            }) 
+        })
+        // page10file10_1Loc.value = ""
+        // page16file16_1Loc.value = "" 
+    } else {
+        console.log("Walidacja nieprawidłowa!")
+        // loadingWrapper.style.display = "none"
+        // thanksContainer.innerText = "Walidacja nieprawidłowa!"
+        // thanksContainer.style.display = "flex"
+        // getPDFFormContainer.style.display = "none"
+    }
+}
+
+buttonSendLoc.addEventListener("click", validateAll)

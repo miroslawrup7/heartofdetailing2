@@ -138,6 +138,9 @@ html {
 .form-pages .form-page.hidden {
   display: none;
 }
+.form-pages .form-page.summary-page form {
+  display: none;
+}
 
 .head-button {
   width: -moz-fit-content;
@@ -592,6 +595,16 @@ html {
   font-family: "WorkSans", sans-serif;
   font-size: 10px;
   color: #B2B2B4;
+}
+.configurator-box .configurator-box-wrapper .copy-to-email .error-box {
+  font-family: "WorkSans", sans-serif;
+  font-size: 12px;
+  color: red;
+}
+.configurator-box .configurator-box-wrapper .copy-to-email .success-box {
+  font-family: "WorkSans", sans-serif;
+  font-size: 12px;
+  color: green;
 }
 
 .buttons {

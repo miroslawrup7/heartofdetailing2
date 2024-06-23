@@ -173,6 +173,12 @@ html {
         &.hidden {
             display: none;
         }
+
+        &.summary-page {
+            form {
+                display: none;
+            }
+        }
     }
 }
 
@@ -636,7 +642,6 @@ html {
             }
         }
 
-
         .copy-to-email {
             display: flex;
             flex-direction: column;
@@ -716,6 +721,18 @@ html {
                         }
                     }
                 }
+            }
+
+            .error-box {
+                font-family: "WorkSans", sans-serif;
+                font-size: 12px;
+                color: red;
+            }
+
+            .success-box {
+                font-family: "WorkSans", sans-serif;
+                font-size: 12px;
+                color: green;
             }
         }
     }

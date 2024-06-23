@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css?cache_bust=1718886333483">
+    <link rel="stylesheet" href="./css/main.css?cache_bust=1719128940749">
     <link rel="shortcut icon" href="#">
 
     <title>Formularz</title>
@@ -1558,7 +1558,7 @@
                                     <div class="item">
                                         <div class="top">
                                             <h5 class="item-name stylingItems">---</h5>
-                                            <div class="item-value stylingPrice">???</div>
+                                            <div class="item-value stylingPrice">0</div>
                                         </div>
                                         <div class="bottom">Stylizacja</div>
                                     </div>
@@ -1625,12 +1625,8 @@
                             <div class="copy-to-email">
                                 <h5 class="title">Zachowaj kopię wyceny na później</h5>
                                 <div class="input-container">
-                                    <input type="email" name="" id="" placeholder="Wpisz swój adres e-mail">
+                                    <input type="email" name="email" id="email" placeholder="Wpisz swój adres e-mail">
                                     <div class="checkbox-and-button">
-                                        <!-- <div class="checkbox-wrapper">
-                                        <input type="checkbox" name="" id="rodo">
-                                        <label for="rodo"></label>
-                                    </div> -->
                                         <div class="checkbox-container">
                                             <label class="checkbox">
                                                 <input type="checkbox" id="rodo" name="checkbox" autocomplete="off">
@@ -1648,13 +1644,16 @@
                                         </div>
                                         <div class="buttons">
                                             <div class="buttons-wrapper">
-                                                <div class="button next">
+                                                <div class="button next send-btn">
                                                     <p>Wyślij</p>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
+                                <div class="error-box"></div>
+                                <div class="success-box"></div>
                             </div>
                         </div>
                     </div>
@@ -1671,12 +1670,39 @@
                         </div>
                     </div>
                 </div>
+
+                <form method="post" id="hidden-summary-form" class="" enctype="multipart/form-data">
+
+                    <input type='text' name="carCondition">
+                    <input type='text' name="carSize">
+                    <input type='text' name="stylingItems">
+                    <input type='text' name="paintRenewalItems">
+                    <input type='text' name="foilItems">
+                    <input type='text' name="paintProtectItems">
+                    <input type='text' name="additionalServicesItems">
+
+                    <input type='text' name="stylingPrice">
+                    <input type='text' name="paintRenewalPrice">
+                    <input type='text' name="foilPrice">
+                    <input type='text' name="paintProtectPrice">
+                    <input type='text' name="additionalServicesPrice">
+
+                    <input type='text' name="endTotalPrice">
+
+                    <input type="text" name="email">
+
+                    <input type="hidden" name="recaptchaResponse" id="recaptchaResponse">
+
+                    <button type="submit" class="btn send-form" id="submit-button">Wyślij</button>
+                </form>
+
             </div>
 
         </div>
     </div>
 
-    <script type="module" src="./js/main.js?cache_bust=1718886333483"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lf2hcIpAAAAAO1sgP7bkMbS_dHflAHZV8bG8eFO"></script>
+    <script type="module" src="./js/main.js?cache_bust=1719128940749"></script>
 </body>
 
 </html>
