@@ -25,6 +25,15 @@ const additionalServicesPriceLoc = document.querySelector(".additionalServicesPr
 
 const endTotalPriceLoc = document.querySelector(".summary-page .totalPrice")
 
+const page1Loc = document.querySelector(".page1")
+const page2Loc = document.querySelector(".page2")
+const page3Loc = document.querySelector(".page3")
+const page3_1Loc = document.querySelector(".page3_1")
+const page3_2Loc = document.querySelector(".page3_2")
+const page3_3Loc = document.querySelector(".page3_3")
+const page3_5Loc = document.querySelector(".page3_5")
+const pageSummaryLoc = document.querySelector(".summary-page")
+
 // stan auta
 let page1; // nowe 1, używane 2
 
@@ -88,15 +97,6 @@ const movePage = (factor, direction) => {
 
     const containerWidthWithoutBorder = containerWidth * factor - leftContainerBorder - rightContainerBorder - leftPagesBorder - rightPagesBorder
     const newLeftValue = actualPosition + direction * containerWidthWithoutBorder
-
-    // console.log("actualPosition", actualPosition)
-    // console.log("containerWidth", containerWidth)
-    // console.log("leftContainerBorder", leftContainerBorder)
-    // console.log("rightContainerBorder", rightContainerBorder)
-    // console.log("leftPagesBorder", leftPagesBorder)
-    // console.log("rightPagesBorder", rightPagesBorder)
-    // console.log("containerWidthWithoutBorder", containerWidthWithoutBorder)
-    // console.log("newLeftValue", newLeftValue)
 
     let animation_time = 0.5 
     let delay_time = 500
@@ -202,6 +202,11 @@ buttonNextArrLoc.forEach((elem) => {
             if (page1 !== undefined) {
                 movePage(1, -1)
                 readDataForEmail()
+
+                const pageheight = getComputedStyle(page2Loc).height
+                containerLoc.style.height = pageheight
+                window.top.postMessage(pageheight, '*')
+            
             }
         }
 
@@ -209,12 +214,33 @@ buttonNextArrLoc.forEach((elem) => {
             if (page2 !== undefined) {
                 movePage(1, -1)
                 readDataForEmail()
+
+                const pageheight = getComputedStyle(page3Loc).height
+                containerLoc.style.height = pageheight
+                window.top.postMessage(pageheight, '*')
             }
         }
 
         if (actualPage.classList.contains("page3")) {
             if (page3Array.some((item)=>(item !== undefined && item !== false))) {
                 movePage(1, -1)
+
+                let selectedPage
+                if (page3Array[0]) {
+                    selectedPage = page3_1Loc
+                } else if (page3Array[1]) {
+                    selectedPage = page3_2Loc
+                } else if (page3Array[2]) {
+                    selectedPage = page3_3Loc
+                } else if (page3Array[3]) {
+                    selectedPage = page3_5Loc
+                } else {
+                    selectedPage = pageSummaryLoc
+                }
+
+                const pageheight = getComputedStyle(selectedPage).height
+                containerLoc.style.height = pageheight
+                window.top.postMessage(pageheight, '*')
             }
         }
 
@@ -222,6 +248,21 @@ buttonNextArrLoc.forEach((elem) => {
             if (page3_1Array.some((item)=>(item !== undefined && item !== false))) {
                 movePage(1, -1)
                 readDataForEmail()
+
+                let selectedPage
+                if (page3Array[1]) {
+                    selectedPage = page3_2Loc
+                } else if (page3Array[2]) {
+                    selectedPage = page3_3Loc
+                } else if (page3Array[3]) {
+                    selectedPage = page3_5Loc
+                } else {
+                    selectedPage = pageSummaryLoc
+                }
+
+                const pageheight = getComputedStyle(selectedPage).height
+                containerLoc.style.height = pageheight
+                window.top.postMessage(pageheight, '*')
             }
         }
         if (actualPage.classList.contains("page3_2")) {
@@ -230,12 +271,36 @@ buttonNextArrLoc.forEach((elem) => {
                 page3_2_3 !== undefined) {
                 movePage(1, -1)
                 readDataForEmail()
+
+                let selectedPage
+                if (page3Array[2]) {
+                    selectedPage = page3_3Loc
+                } else if (page3Array[3]) {
+                    selectedPage = page3_5Loc
+                } else {
+                    selectedPage = pageSummaryLoc
+                }
+
+                const pageheight = getComputedStyle(selectedPage).height
+                containerLoc.style.height = pageheight
+                window.top.postMessage(pageheight, '*')
             }
         }
         if (actualPage.classList.contains("page3_3")) {
             if (page3_3_1 !== undefined ){
                 movePage(1, -1)
                 readDataForEmail()
+
+                let selectedPage
+                if (page3Array[3]) {
+                    selectedPage = page3_5Loc
+                } else {
+                    selectedPage = pageSummaryLoc
+                }
+
+                const pageheight = getComputedStyle(selectedPage).height
+                containerLoc.style.height = pageheight
+                window.top.postMessage(pageheight, '*')
             }
         }
         // if (actualPage.classList.contains("page3_4")) {
@@ -247,6 +312,10 @@ buttonNextArrLoc.forEach((elem) => {
             if (page3_5Array.some((item)=>(item !== undefined && item !== false))) {
                 movePage(1, -1)
                 readDataForEmail()
+
+                const pageheight = getComputedStyle(pageSummaryLoc).height
+                containerLoc.style.height = pageheight
+                window.top.postMessage(pageheight, '*')
             }
         }
     })
@@ -265,24 +334,76 @@ buttonPrevArrLoc.forEach((elem) => {
 
         if (actualPage.classList.contains("page2")) {
             movePage(1, 1)
+
+            const pageheight = getComputedStyle(page1Loc).height
+            containerLoc.style.height = pageheight
+            window.top.postMessage(pageheight, '*')
+            
         }
         if (actualPage.classList.contains("page3")) {
             movePage(1, 1)
+
+            const pageheight = getComputedStyle(page2Loc).height
+            containerLoc.style.height = pageheight
+            window.top.postMessage(pageheight, '*')
         }
         if (actualPage.classList.contains("page3_1")) {
             movePage(1, 1)
+
+            const pageheight = getComputedStyle(page3Loc).height
+            containerLoc.style.height = pageheight
+            window.top.postMessage(pageheight, '*')
         }
         if (actualPage.classList.contains("page3_2")) {
             movePage(1, 1)
+
+            let selectedPage
+            if (page3Array[0]) {
+                selectedPage = page3_1Loc
+            } else {
+                selectedPage = page3Loc
+            }
+
+            const pageheight = getComputedStyle(selectedPage).height
+            containerLoc.style.height = pageheight
+            window.top.postMessage(pageheight, '*')
         }
         if (actualPage.classList.contains("page3_3")) {
             movePage(1, 1)
+
+            let selectedPage
+            if (page3Array[1]) {
+                selectedPage = page3_2Loc
+            } else if (page3Array[0]) {
+                selectedPage = page3_1Loc
+            } else {
+                selectedPage = page3Loc
+            }
+
+            const pageheight = getComputedStyle(selectedPage).height
+            containerLoc.style.height = pageheight
+            window.top.postMessage(pageheight, '*')
         }
         // if (actualPage.classList.contains("page3_4")) {
         //     movePage(1, 1)
         // }
         if (actualPage.classList.contains("page3_5")) {
             movePage(1, 1)
+
+            let selectedPage
+            if (page3Array[2]) {
+                selectedPage = page3_3Loc
+            } else if (page3Array[1]) {
+                selectedPage = page3_2Loc
+            } else if (page3Array[0]) {
+                selectedPage = page3_1Loc
+            } else {
+                selectedPage = page3Loc
+            }
+
+            const pageheight = getComputedStyle(selectedPage).height
+            containerLoc.style.height = pageheight
+            window.top.postMessage(pageheight, '*')
         }
     })
 })
@@ -938,3 +1059,10 @@ const validateAll = (e) => {
 }
 
 buttonSendLoc.addEventListener("click", validateAll)
+
+document.addEventListener("readystatechange", (event) => {
+    if (event.target.readyState === "complete") {
+        const page1height = getComputedStyle(page1Loc).height
+        containerLoc.style.height = page1height
+    }
+})

@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    line-height: 1.4;
+    vertical-align: baseline;
+    text-decoration: none;
+    outline: 0;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(169, 169, 169, 0.137);
+    min-height: 100vh;
+    padding: 20px;
+
+    iframe {
+        width: 100%;
+        display: block;
+    }
+}
