@@ -266,25 +266,50 @@ buttonNextArrLoc.forEach((elem) => {
             }
         }
         if (actualPage.classList.contains("page3_2")) {
-            if (page3_2_1 !== undefined &&
-                page3_2_2 !== undefined &&
-                page3_2_3 !== undefined) {
-
-                movePage(1, -1)
-                readDataForEmail()
-
-                let selectedPage
-                if (page3Array[2]) {
-                    selectedPage = page3_3Loc
-                } else if (page3Array[3]) {
-                    selectedPage = page3_5Loc
-                } else {
-                    selectedPage = pageSummaryLoc
+            console.log(elem)
+            if (elem.classList.contains("skip")) {
+                if (page3_2_1 !== undefined &&
+                    page3_2_2 !== undefined) {
+    
+                    movePage(1, -1)
+                    readDataForEmail()
+    
+                    let selectedPage
+                    if (page3Array[2]) {
+                        selectedPage = page3_3Loc
+                    } else if (page3Array[3]) {
+                        selectedPage = page3_5Loc
+                    } else {
+                        selectedPage = pageSummaryLoc
+                    }
+    
+                    const pageheight = getComputedStyle(selectedPage).height
+                    containerLoc.style.height = pageheight
+                    window.top.postMessage(pageheight, '*')
                 }
+            }
 
-                const pageheight = getComputedStyle(selectedPage).height
-                containerLoc.style.height = pageheight
-                window.top.postMessage(pageheight, '*')
+            if (elem.classList.contains("next")) {
+                if (page3_2_1 !== undefined &&
+                    page3_2_2 !== undefined &&
+                    page3_2_3 !== undefined) {
+    
+                    movePage(1, -1)
+                    readDataForEmail()
+    
+                    let selectedPage
+                    if (page3Array[2]) {
+                        selectedPage = page3_3Loc
+                    } else if (page3Array[3]) {
+                        selectedPage = page3_5Loc
+                    } else {
+                        selectedPage = pageSummaryLoc
+                    }
+    
+                    const pageheight = getComputedStyle(selectedPage).height
+                    containerLoc.style.height = pageheight
+                    window.top.postMessage(pageheight, '*')
+                }
             }
         }
         if (actualPage.classList.contains("page3_3")) {
