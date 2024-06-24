@@ -575,7 +575,7 @@ const calculateCost = (item_name, item_no, state) => {
     
             const totalPriceLoc = document.querySelectorAll(".totalPrice")
             totalPriceLoc.forEach((elem)=>{
-                elem.innerText = totalPrice + " pln"
+                elem.innerText = "od " + totalPrice + " pln*"
             })
     
             stylingPriceLoc.innerText = stylingPrice
@@ -712,7 +712,7 @@ const removeFromCalculateCost = (item_name, item_no, state) => {
     
         const totalPriceLoc = document.querySelectorAll(".totalPrice")
         totalPriceLoc.forEach((elem)=>{
-            elem.innerText = totalPrice + " pln"
+            elem.innerText = "od " + totalPrice + " pln*"
         })
 
         // if (totalTime > 8) {
