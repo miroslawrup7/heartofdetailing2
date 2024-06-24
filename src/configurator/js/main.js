@@ -5,7 +5,7 @@ import {pricingCostObj, pricingTimeObj} from './pricing.js'
 const containerLoc = document.querySelector(".container")
 const formPagesLoc = document.querySelector(".form-pages")
 const formPageArrLoc = document.querySelectorAll(".form-page")
-const buttonNextArrLoc = document.querySelectorAll(".button.next:not(.send-btn)")
+const buttonNextArrLoc = document.querySelectorAll(".button.move-next")
 const buttonPrevArrLoc = document.querySelectorAll(".button.prev")
 
 const carConditionLoc = document.querySelector(".summary-page .carCondition")
@@ -269,6 +269,7 @@ buttonNextArrLoc.forEach((elem) => {
             if (page3_2_1 !== undefined &&
                 page3_2_2 !== undefined &&
                 page3_2_3 !== undefined) {
+
                 movePage(1, -1)
                 readDataForEmail()
 
@@ -879,6 +880,8 @@ contentArrLoc.forEach((elem)=>{
                     if (item_no === "1") { paintRenewalItem = "Odświeżanie lakieru" }
                     if (item_no === "2") { paintRenewalItem = "Korekta lakieru" }
                     paintRenewalItemsLoc.innerText = paintRenewalItem
+
+                   
                 }
                 
                 if (item_name === "page3_3_1") {
@@ -896,6 +899,13 @@ contentArrLoc.forEach((elem)=>{
                     if (item_no === "3") { paintProtectItems = "Ceramika 3lata" }
                     if (item_no === "4") { paintProtectItems = "Ceramika 4lata" }
                     paintProtectItemsLoc.innerText = paintProtectItems
+
+                    const specbtn2Loc = document.querySelector(".page3_2 .next.move-next")
+                    specbtn2Loc.classList.remove("hidden")
+                    const specbtn1Loc = document.querySelector(".page3_2 .skip-long")
+                    specbtn1Loc.classList.add("hidden")
+                
+
                 }
             }
 
@@ -1065,4 +1075,12 @@ document.addEventListener("readystatechange", (event) => {
         const page1height = getComputedStyle(page1Loc).height
         containerLoc.style.height = page1height
     }
+})
+
+const contactBtn = document.querySelector(".summary-page .contact-btn")
+contactBtn.addEventListener("click", ()=>{
+    
+
+window.top.location.href = "https://dev.heartofdetailing.pl/kontakt/"; 
+
 })

@@ -761,6 +761,12 @@ html {
             background-origin: border-box;
             background-clip: content-box, border-box, border-box;
             border-radius: 50px;
+
+            &.skip-long {
+                &.hidden {
+                    display: none;
+                }
+            }
         }
 
         .button {
@@ -795,6 +801,10 @@ html {
 
             img {
                 height: 9px;
+            }
+
+            &.hidden {
+                display: none;
             }
         }
     }
@@ -931,7 +941,11 @@ html {
                                         transform: translateX(50%);
                                         width: max-content;
                                         margin-bottom: 30px;
+
+
                                     }
+
+
                                 }
                             }
                         }
@@ -1082,7 +1096,7 @@ html {
 
                         .buttons:has(.skip-long) {
                             position: relative;
-                            margin-top: 80px;
+                            margin-top: 110px;
 
                             .buttons-wrapper:has(.skip-long) {
                                 .button-parent-transparent {
