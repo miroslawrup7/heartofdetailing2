@@ -266,7 +266,6 @@ buttonNextArrLoc.forEach((elem) => {
             }
         }
         if (actualPage.classList.contains("page3_2")) {
-            console.log(elem)
             if (elem.classList.contains("skip")) {
                 if (page3_2_1 !== undefined &&
                     page3_2_2 !== undefined) {
